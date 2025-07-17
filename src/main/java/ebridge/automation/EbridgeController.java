@@ -25,4 +25,3 @@ public class EbridgeController {
     //public String index() {
     	//return "static/index.html;"
     }
-
