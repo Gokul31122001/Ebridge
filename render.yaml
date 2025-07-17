@@ -1,7 +1,10 @@
 services:
   - type: web
     name: ebridge-java-app
-    env: docker
+    env: ubuntu
     plan: free
-    region: oregon
-    dockerfilePath: ./Dockerfile
+    buildCommand: |
+      sudo apt-get update
+      sudo apt-get install -y maven
+      ./mvnw clean package -DskipTests
+    startCommand: java -jar target/*.jar
