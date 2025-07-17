@@ -1,4 +1,9 @@
-buildCommand: |
-  apt-get update
-  apt-get install -y maven
-  mvn package
+services:
+  - type: web
+    name: automation-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8080
