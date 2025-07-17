@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ebridge Automation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #log {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            white-space: pre-line;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ebridge Automation Tool</h1>
+    <button onclick="startAutomation()">▶ Start Automation</button>
+
+    <div id="log">Log output will appear here...</div>
+
+    <script>
+        function startAutomation() {
+            document.getElementById("log").innerText = "Running automation, please wait...";
+            fetch("/start")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Request failed with status: " + response.status);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById("log").innerHTML = data;
+                })
+                .catch(error => {
+                    document.getElementById("log").innerText = "Error: " + error.message;
+                });
+        }
+    </script>
+
+</body>
+</html>
