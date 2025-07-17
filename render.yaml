@@ -1,3 +1,8 @@
-buildCommand: |
-  apt-get update && apt-get install -y maven
-  mvn package
+services:
+  - type: web
+    name: ebridge-java-app
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
