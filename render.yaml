@@ -1,9 +1,9 @@
 services:
   - type: web
     name: automation-app
-    env: docker
-    dockerfilePath: ./Dockerfile
     plan: free
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/automation-0.0.1-SNAPSHOT.jar
     envVars:
       - key: PORT
         value: 8080
