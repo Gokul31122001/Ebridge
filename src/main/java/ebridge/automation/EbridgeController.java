@@ -21,8 +21,8 @@ public class EbridgeController {
 //    	return 
 //    }
     
-    @GetMapping("/jk")
-    public String index() {
-    	return "static/index.html;"
+   // @GetMapping("/jk")
+    //public String index() {
+    	//return "static/index.html;"
     }
-}
+
